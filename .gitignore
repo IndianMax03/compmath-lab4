@@ -2,6 +2,7 @@
 **/target/**
 .mvn/wrapper/maven-wrapper.jar
 **/src/test/**/target/
+src/main/webapp/js/anekdots.js
 
 ### IntelliJ IDEA ###
 .idea/**
