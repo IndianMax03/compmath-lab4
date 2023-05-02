@@ -22,12 +22,41 @@ public class ApproximationService {
         LogApproximation logAppro = new LogApproximation(points);
         PowerApproximation powAppro = new PowerApproximation(points);
         SquareApproximation squareAppro = new SquareApproximation(points);
-        approximations.add(cubeAppro);
-        approximations.add(expoAppro);
-        approximations.add(lineAppro);
-        approximations.add(logAppro);
-        approximations.add(powAppro);
-        approximations.add(squareAppro);
+
+
+        double[] x = points.getX();
+        double[] y = points.getY();
+
+        boolean hasNegX = false;
+        boolean hasNegY = false;
+
+        for (int i = 0; i < FunctionalApproximation.N; i++) {
+            if (x[i] < 0) {
+                hasNegX = true;
+            }
+            if (y[i] < 0) {
+                hasNegY = true;
+            }
+        }
+
+        if (hasNegX) {
+            approximations.add(cubeAppro);
+            approximations.add(expoAppro);
+            approximations.add(lineAppro);
+            approximations.add(squareAppro);
+        } else if (hasNegY) {
+            approximations.add(cubeAppro);
+            approximations.add(lineAppro);
+            approximations.add(logAppro);
+            approximations.add(squareAppro);
+        } else {
+            approximations.add(cubeAppro);
+            approximations.add(expoAppro);
+            approximations.add(lineAppro);
+            approximations.add(logAppro);
+            approximations.add(powAppro);
+            approximations.add(squareAppro);
+        }
     }
 
     public ObjectNode processData() {
@@ -54,13 +83,14 @@ public class ApproximationService {
             }
 
         }
-        FunctionalApproximation answer = approximations.get(4);
+        FunctionalApproximation answer = approximations.get(minDiviationIndex);
         node.put("name", answer.toString());
         node.putPOJO("x",  Collections.singletonList(answer.getX()));
         node.putPOJO("y",  Collections.singletonList(answer.getY()));
         node.put("a", answer.getA());
         node.put("b", answer.getB());
         node.put("c", answer.getC());
+        node.put("d", answer.getD());
         node.putPOJO("phy", Collections.singletonList(answer.getPhy()));
         node.putPOJO("epsilons", Collections.singletonList(answer.getEpsilons()));
         node.put("S", answer.getDeviationMeasure());

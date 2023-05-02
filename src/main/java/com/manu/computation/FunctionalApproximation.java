@@ -13,6 +13,7 @@ public abstract class FunctionalApproximation {
     protected double a = 0;
     protected double b = 0;
     protected double c = 0;
+    protected double d = 0;
 
     protected double standardDeviation; //  среднеквадратичное отклонение
     protected double[] epsilons = new double[N]; //  отклонения
@@ -89,6 +90,9 @@ public abstract class FunctionalApproximation {
 
     public double getC() {
         return c;
+    }
+    public double getD() {
+        return d;
     }
 
     public double[] getX() {
