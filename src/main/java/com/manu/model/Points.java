@@ -1,11 +1,13 @@
 package com.manu.model;
 
+import com.manu.computation.FunctionalApproximation;
+
 import java.util.Arrays;
 
 public class Points {
 
-    private double[] x;
-    private double[] y;
+    private double[] x = new double[FunctionalApproximation.N];
+    private double[] y = new double[FunctionalApproximation.N];
 
     public Points() {
     }

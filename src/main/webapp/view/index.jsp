@@ -110,7 +110,6 @@
 
 
 <script src="<c:url value="/js/graphic.js"/>"></script>
-<script src="<c:url value="/js/buttons.js"/>"></script>
 <script src="<c:url value="/js/anekdots.js"/>"></script>
 </body>
 </html>
